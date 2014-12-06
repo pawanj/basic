@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="WebApplication" basedir=".">
+	<target name="build.all">
+		<ant antfile="build-war.xml" target="ws.build" />
+	</target>
+</project>

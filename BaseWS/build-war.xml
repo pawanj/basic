@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="BuildWSWar" basedir=".">
+	<description>Build WAR file.</description>
+	
+	<target name="ws.init">
+		<echo message="Cleaning the directories" />
+		
+		<!-- Deleting the existing WAR file -->
+		<delete>
+			<fileset dir=".\target">
+				<include name="BaseWS.war" />
+			</fileset>
+		</delete>
+			
+		<!-- Clean the WEB-INF/lib folder -->
+		<delete>
+			<fileset dir=".\target\BaseWS\WEB-INF\lib">
+				<include name="**.*.jar" />
+			</fileset>
+		</delete>
+	</target>
+	
+	<target name="ws.prepare">
+		<echo message="Preparing artifacts for WAR file." />
+		
+		<war destfile=".\target\BaseWS.war" basedir=".\target\BaseWS" includes="**\*" webxml=".\target\BaseWS\WEB-INF\web.xml" />
+	</target>
+	
+	<target name="ws.build" depends="ws.prepare" />
+	
+</project>
